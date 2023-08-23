@@ -5,7 +5,6 @@ font.init()
 window = display.set_mode((800,500))
 display.set_caption('Шутер')
 background = transform.scale(image.load('galaxy.jpg'),(800,500))
-
 #переменные
 lost = 0
 lost_max = 3
@@ -22,7 +21,6 @@ class GameSprite(sprite.Sprite):
         self.rect.y = y
     def show1(self):
         window.blit(self.image,(self.rect.x,self.rect.y))
-
 class Player(GameSprite):
     def move(self):
         key_pressed = key.get_pressed()
@@ -34,8 +32,6 @@ class Player(GameSprite):
         bul = Bullet('bullet.png',6,(self.rect.x + self.width//2 - 7.5),(self.rect.y - self.hight),15,20)
         buls.add(bul)
 
-
-
 class Ufo(GameSprite):
     def update(self):
         self.rect.y += self.speed
@@ -45,17 +41,11 @@ class Ufo(GameSprite):
             self.rect.x = randint(0,740)
             lost = lost + 1
 
-
 class Bullet(GameSprite):
     def update(self):
         self.rect.y -= self.speed
         if self.rect.y <= 0 :
             self.kill()
-        
-
-
-
-
 
 player = Player('rocket.png',8,370,430,45,65)
 monsters = sprite.Group()
@@ -99,12 +89,7 @@ while game:
             text_lose = font2.render('YOU LOSE WITH SCORE : '+ str(score),True,(255,0,0))
             window.blit(text_lose,(260,100))
 
-        
-         
-
-        # if sprite.groupcollide(buls,monsters,True,True):
-         
-
+    
         if score >= 25: 
             finish = True
             font3 = font.SysFont('Arial',45)
